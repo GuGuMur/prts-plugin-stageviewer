@@ -1,5 +1,5 @@
 {
-  "name": "ipe-plugin-example",
-  "description": "desc",
-  "icon": "fa-cube"
+  "name": "ipe-plugin-prts-stageviewer",
+  "description": "查看关卡JSON",
+  "icon": "fa:code"
 }

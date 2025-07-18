@@ -24,7 +24,7 @@
   "include": [
     "./src",
     "./node_modules/types-mediawiki",
-    "vite.config.ts"
+    "vite.config.js"
   ],
   "exclude": [
     "dist"
