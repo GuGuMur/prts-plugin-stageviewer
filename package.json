@@ -1,5 +1,5 @@
 {
-  "name": "ipe-plugin-template",
+  "name": "prts-plugin-stageviewer",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
@@ -14,19 +14,18 @@
     "@vicons/carbon": "^0.13.0",
     "@vitejs/plugin-vue": "^6.0.0",
     "autoprefixer": "^10.4.21",
-    "naive-ui": "^2.42.0",
     "postcss-prefix-selector": "^2.1.1",
     "terser": "^5.43.1",
     "types-mediawiki": "^1.10.1",
     "typescript": "~5.8.3",
-    "unocss": "^66.3.3",
     "vite": "^7.0.0",
     "vite-live-preview": "^0.3.2",
     "vite-plugin-banner": "^0.8.1"
   },
   "dependencies": {
-    "clipboard": "^2.0.11",
-    "vue": "^3.5.17",
-    "vue3-json-viewer": "^2.4.1"
+    "naive-ui": "^2.42.0",
+    "unocss": "^66.3.3",
+    "json-editor-vue": "^0.18.1",
+    "vue": "^3.5.17"
   }
 }

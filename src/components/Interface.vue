@@ -1,19 +1,25 @@
 <template>
   <n-button
-    text
+    secondary
     @click="showModal = true"
-    class="w-full h-full">
-    <n-icon>
-      <JsonReference />
-    </n-icon>
+    strong
+    type="info">
+    <template #icon>
+      <n-icon>
+        <JsonReference />
+      </n-icon>
+    </template>
+    <n-text>点击打开关卡JSON</n-text>
   </n-button>
   <n-modal
     v-model:show="showModal"
     :style="{ width: '90vw !important', height: '70vh !important' }"
-    preset="dialog"
-    :icon="() => h(JsonReference)">
-    <n-flex vertical>
+    preset="card">
+    <template #header>
       <n-flex>
+        <n-icon>
+          <JsonReference />
+        </n-icon>
         <a
           :href="PRTSMAP_url"
           target="_blank">
@@ -25,15 +31,29 @@
             </template>
           </n-tag>
         </a>
+        <a
+          v-if="stageName && stageName.includes('ISW')"
+          :href="`https://tomimi.dev/zh/stages/${stageName.replace(/ /g, '_')}`"
+          target="_blank">
+          <n-tag round>
+            <n-text>Tomimi.dev</n-text>
+            <template #avatar>
+              <n-avatar
+                src="https://tomimi.dev/_app/immutable/assets/favicon.e511bc87.webp" />
+            </template>
+          </n-tag>
+        </a>
       </n-flex>
-      <div class="max-h-50vh overflow-auto">
-        <JsonViewer
-          :value="stageJSON"
-          copyable
-          boxed
-          theme="light" />
-      </div>
-    </n-flex>
+    </template>
+    <n-scrollbar
+      style="max-height: 50vh"
+      trigger="none">
+      <JsonEditorVue
+        v-model="stageJSON"
+        :mainMenuBar="false"
+        :readOnly="false"
+        style="height: auto; overflow: auto" />
+    </n-scrollbar>
   </n-modal>
 </template>
 
@@ -48,11 +68,13 @@ import {
   NTag,
   NAvatar,
   NFlex,
+  NScrollbar,
   useMessage,
   useModal,
   useNotification,
 } from "naive-ui";
-import JsonViewer from "vue3-json-viewer";
+// import JsonViewer from "vue3-json-viewer";
+import JsonEditorVue from "json-editor-vue";
 import { JsonReference } from "@vicons/carbon";
 import { getStageInfo } from "../utils/arktool";
 

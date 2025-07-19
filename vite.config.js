@@ -4,8 +4,8 @@ import { fileURLToPath } from "node:url";
 import livePreview from "vite-live-preview";
 import UnoCSS from "unocss/vite";
 import vue from "@vitejs/plugin-vue";
-import prefixer from 'postcss-prefix-selector';
-import autoprefixer from 'autoprefixer';
+// import prefixer from 'postcss-prefix-selector';
+// import autoprefixer from 'autoprefixer';
 
 // import transformerCompileClass from "@unocss/transformer-compile-class";
 
@@ -43,27 +43,27 @@ export default defineConfig(() => ({
     },
   ],
   css: {
-    postcss: {
-      plugins: [
-        prefixer({
-          prefix: '.ipe-plugin-prts-stageviewer',
-          transform(prefix, selector, prefixedSelector, filePath, rule) {
-            if (selector.match(/^(html|body)/)) {
-              return selector.replace(/^([^\s]*)/, `$1 ${prefix}`);
-            }
+    // postcss: {
+    //   plugins: [
+    //     prefixer({
+    //       prefix: '.ipe-plugin-prts-stageviewer',
+    //       transform(prefix, selector, prefixedSelector, filePath, rule) {
+    //         if (selector.match(/^(html|body)/)) {
+    //           return selector.replace(/^([^\s]*)/, `$1 ${prefix}`);
+    //         }
 
-            const annotation = rule.prev();
-            if (annotation?.type === 'comment' && annotation.text.trim() === 'no-prefix') {
-              return selector; // Do not prefix style rules that are preceded by: /* no-prefix */
-            }
+    //         const annotation = rule.prev();
+    //         if (annotation?.type === 'comment' && annotation.text.trim() === 'no-prefix') {
+    //           return selector; // Do not prefix style rules that are preceded by: /* no-prefix */
+    //         }
 
-            return prefixedSelector;
-          },
-        }),
+    //         return prefixedSelector;
+    //       },
+    //     }),
 
-        autoprefixer({}) // add options if needed
-      ],
-    }
+    //     autoprefixer({}) // add options if needed
+    //   ],
+    // }
   },
   rules: {
     // "@unocss/enforce-class-compile": "warn",
