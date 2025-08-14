@@ -37,6 +37,10 @@ export async function getStageInfo(stageId) {
   } else if (stageId.startsWith("ch_")) {
     const file = await readArkFile("excel/story_review_meta_table.json");
     stageLocation = file.trainingCampData.stageData[stageId].levelId;
+  } else if (stageId.startsWith("level_rune")) {
+    stageLocation = "obt/rune/" + stageId;
+  } else if (stageId.startsWith("level_crisis_v2")) {
+    stageLocation = "obt/crisis/v2/" + stageId;
   } else {
     const file = await readArkFile("excel/stage_table.json");
     stageLocation = file.stages[stageId].levelId;
